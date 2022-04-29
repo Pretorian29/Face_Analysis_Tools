@@ -22,7 +22,7 @@ def click_event(event, x, y, flags, params):
  
     # checking for left mouse clicks
     if event == cv2.EVENT_LBUTTONDOWN:
- 
+        cv2.circle(img,(x,y),2,(255,0,0),-1) #Displaying Landmark point
         # displaying the coordinates
         # on the Shell
         print(x, ' ', y)
@@ -32,7 +32,7 @@ def click_event(event, x, y, flags, params):
         font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(img, str(x) + ',' +
                     str(y), (x,y), font,
-                    1, (255, 0, 0), 2)
+                    1, (255, 0, 255), 2)
         cv2.imshow('image', img)
  
     # checking for right mouse clicks    
@@ -76,6 +76,8 @@ if __name__=="__main__":
 
 
 #-----------------------------------------------------------------
+
+
 
 
 
