@@ -16,31 +16,37 @@ import cv2
 file_path = './images/10405424_1.jpg'
 
  
+point_num = 0
+
 # function to display the coordinates of
 # of the points clicked on the image
+
 def click_event(event, x, y, flags, params):
- 
+    global point_num
     # checking for left mouse clicks
     if event == cv2.EVENT_LBUTTONDOWN:
+        point_num = point_num + 1
         cv2.circle(img,(x,y),2,(255,0,0),-1) #Displaying Landmark point
+        
         # displaying the coordinates
         # on the Shell
-        print(x, ' ', y)
- 
+        print(x, ' ', y, ' ', point_num)
+         
         # displaying the coordinates
         # on the image window
         font = cv2.FONT_HERSHEY_SIMPLEX
-        cv2.putText(img, str(x) + ',' +
-                    str(y), (x,y), font,
-                    1, (255, 0, 255), 2)
+        cv2.putText(img, str(point_num) +
+                    str(''), (x,y), font,
+                    0.5, (255, 0, 255), 2)
         cv2.imshow('image', img)
  
     # checking for right mouse clicks    
     if event==cv2.EVENT_RBUTTONDOWN:
- 
+        point_num = point_num + 1
+        cv2.circle(img,(x,y),2,(255,0,255),-1) #Displaying Landmark point
         # displaying the coordinates
         # on the Shell
-        print(x, ' ', y)
+        print(x, ' ', y,' ', point_num)
  
         # displaying the coordinates
         # on the image window
@@ -48,10 +54,9 @@ def click_event(event, x, y, flags, params):
         b = img[y, x, 0]
         g = img[y, x, 1]
         r = img[y, x, 2]
-        cv2.putText(img, str(b) + ',' +
-                    str(g) + ',' + str(r),
+        cv2.putText(img, str(point_num),
                     (x,y), font, 1,
-                    (255, 255, 0), 2)
+                    (255, 0, 0), 2)
         cv2.imshow('image', img)
  
 # driver function
