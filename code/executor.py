@@ -37,13 +37,13 @@ def click_event(event, x, y, flags, params):
         font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(resized, str(point_num) +
                     str(''), (x,y), font,
-                    0.5, (255, 0, 255), 2)
+                    0.5, (0, 255, 0), 1)
         cv2.imshow('image', resized)
  
     # checking for right mouse clicks    
     if event==cv2.EVENT_RBUTTONDOWN:
         point_num = point_num + 1
-        cv2.circle(resized,(x,y),2,(255,0,255),-1) #Displaying Landmark point
+        cv2.circle(resized,(x,y),2,(255,0,0),-1) #Displaying Landmark point
         # displaying the coordinates
         # on the Shell
         print(x, ' ', y,' ', point_num)
@@ -54,7 +54,7 @@ def click_event(event, x, y, flags, params):
         
         cv2.putText(resized, str(point_num),
                     (x,y), font, 0.5,
-                    (255, 0, 0), 2)
+                    (0, 255, 0), 1)
         cv2.imshow('image', resized)
  
 # driver function
@@ -65,9 +65,8 @@ if __name__=="__main__":
  
     print('Original Dimensions : ',img.shape)
     
-    scale_percent = 220 # percent of original size
-    width = int(img.shape[1] * scale_percent / 100)
-    height = int(img.shape[0] * scale_percent / 100)
+    width = 750
+    height = 850
     dim = (width, height)
   
     # resize image
@@ -87,14 +86,6 @@ if __name__=="__main__":
  
     # close the window
     cv2.destroyAllWindows()
-
-
-
-#-----------------------------------------------------------------
-
-
-
-
 
 #------------------------------------------------------------------
 __author__ = 'Paola Montoya 2022'
